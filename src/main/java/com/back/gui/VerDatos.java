@@ -172,7 +172,7 @@ public class VerDatos extends javax.swing.JFrame {
             if (tablaUsuarios.getSelectedRow()!= -1) {
                 
                 int id_usuario = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(),0)));
-                ModificarDatos pantallaMod = new ModificarDatos();
+                ModificarDatos pantallaMod = new ModificarDatos(id_usuario);
                 pantallaMod.setVisible(true);
                 //this.setVisible(false);
                 pantallaMod.setLocationRelativeTo(null);

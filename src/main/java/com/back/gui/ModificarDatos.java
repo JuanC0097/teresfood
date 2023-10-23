@@ -1,16 +1,19 @@
 package com.back.gui;
 
 import com.back.model.Controladora;
+import com.back.model.Usuario;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class ModificarDatos extends javax.swing.JFrame {
 
     Controladora control = null;
+    int id_usuario;
 
-    public ModificarDatos() {
+    public ModificarDatos(int id_usuario) {
         control = new Controladora();
         initComponents();
+        cargarDatos(id_usuario);
     }
 
     @SuppressWarnings("unchecked")
@@ -148,21 +151,13 @@ public class ModificarDatos extends javax.swing.JFrame {
         4.Habilitar la visibilidad del nuevo jframe y desabilitar la anterior
     */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        /*String nombreUsuario = txtNombre.getText();
+        //Datos del usuario
+        String nombreUsuario = txtNombre.getText();
         String apellidoUsuario = txtApellido.getText();
         String documentoUsuario = txtDocumento.getText();
-        String cargoUsuario = (String) cmbCargo.getSelectedItem();
-        CargarDatos ventana3 = new CargarDatos();
-        ventana3.obtenerDatosNuevoIngreso(nombreUsuario, apellidoUsuario, documentoUsuario, cargoUsuario);
         
-        JOptionPane optionPane = new JOptionPane("Se Creo Nuevo Usuario Correctamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-        ventana3.setVisible(true);
-        this.setVisible(false);
-        ventana3.setLocationRelativeTo(null);*/
+        
+        //control.modificarUsuario(nombreUsuario, apellidoUsuario,documentoUsuario);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /*
@@ -196,4 +191,13 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(int id_usuario) {
+        Usuario usuario = control.traerUsuario(id_usuario);
+        
+        txtNombre.setText(usuario.getNombre());
+        txtApellido.setText(usuario.getApellido());
+        txtDocumento.setText(usuario.getDocumento());
+        
+    }
 }

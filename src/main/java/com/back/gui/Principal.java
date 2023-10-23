@@ -12,7 +12,6 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         txtViewDocumento.setText(Login.documentoIngreso);
-        jTextField1.setText(Login.password);
     }
 
     @SuppressWarnings("unchecked")
@@ -22,7 +21,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         txtViewDocumento = new javax.swing.JTextField();
         btnCargarDatos = new javax.swing.JButton();
         btnVerDatos = new javax.swing.JButton();
@@ -39,15 +37,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/theresfoodlogo.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 130, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 370, 280));
 
         txtViewDocumento.setEditable(false);
         txtViewDocumento.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(txtViewDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 130, 30));
+        jPanel1.add(txtViewDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 130, 30));
 
         btnCargarDatos.setBackground(new java.awt.Color(102, 153, 255));
         btnCargarDatos.setText("Cargar Datos");
@@ -56,7 +50,7 @@ public class Principal extends javax.swing.JFrame {
                 btnCargarDatosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 140, 30));
+        jPanel1.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 140, 30));
 
         btnVerDatos.setBackground(new java.awt.Color(102, 153, 255));
         btnVerDatos.setText("Mostrar Datos");
@@ -65,7 +59,7 @@ public class Principal extends javax.swing.JFrame {
                 btnVerDatosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 140, 30));
+        jPanel1.add(btnVerDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 140, 30));
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setText("Volver");
@@ -128,7 +122,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtViewDocumento;
     // End of variables declaration//GEN-END:variables
 }

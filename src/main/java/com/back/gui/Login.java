@@ -118,10 +118,27 @@ public class Login extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         documentoIngreso = txtDocumentoIngreso.getText();
         password = txtContraseña.getText();
-        Principal ventana2 =  new Principal();
+        String passwordDb = "Admin123";
+        if (password.equals(passwordDb)) {
+            Principal ventana2 =  new Principal();
+            ventana2.setVisible(true);
+            this.setVisible(false);
+            ventana2.setLocationRelativeTo(null);
+            JOptionPane optionPane = new JOptionPane("Ha iniciado Sesion Correctamente");
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Inicio de Sesion");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        }
+        /*Principal ventana2 =  new Principal();
         ventana2.setVisible(true);
         this.setVisible(false);
         ventana2.setLocationRelativeTo(null);
+        JOptionPane optionPane = new JOptionPane("Ha iniciado Sesion Correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Inicio de Sesion");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);*/
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /*
@@ -136,11 +153,6 @@ public class Login extends javax.swing.JFrame {
         documentoIngreso = txtDocumentoIngreso.getText();
         password = txtContraseña.getText();
         NuevoIngreso nuevoIngreso = new NuevoIngreso();
-        JOptionPane optionPane = new JOptionPane("Ha iniciado Sesion Correctamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Inicio de Sesion");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
         nuevoIngreso.setVisible(true);
         this.setVisible(false);
         nuevoIngreso.setLocationRelativeTo(null);
