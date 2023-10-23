@@ -1,9 +1,19 @@
 package com.back.model;
 
-public class Usuario {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Usuario implements Serializable {
    /*
         Atributos de la clase
     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_usuario;
     private String nombre;
     private String apellido;
@@ -11,6 +21,7 @@ public class Usuario {
     private String cargo;
     private String password;
     
+    @OneToOne
     private Horario horario;
 
     /*

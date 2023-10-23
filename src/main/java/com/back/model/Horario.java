@@ -1,10 +1,19 @@
 package com.back.model;
 
-public class Horario {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Horario implements Serializable {
     
     /*
         Atributos
     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id_horario;
     private String jornada;
     private String horario;
