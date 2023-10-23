@@ -31,5 +31,9 @@ public class Controladora {
     public List<Usuario> traerUsuarios() {
         return controlPersis.traerUsuario();
     }
+
+    public void borrarUsuario(int id_usuario) {
+        controlPersis.borrarUsuario(id_usuario);
+    }
     
 }

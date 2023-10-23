@@ -2,7 +2,10 @@ package com.back.persistence;
 
 import com.back.model.Horario;
 import com.back.model.Usuario;
+import com.back.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladoraPersistencia {
     
@@ -23,6 +26,17 @@ public class ControladoraPersistencia {
          
         return userJpa.findUsuarioEntities();
 
+    }
+
+    /*
+        Metodo para borrar un usuario
+    */
+    public void borrarUsuario(int id_usuario) {
+        try {
+            userJpa.destroy(id_usuario);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -3,6 +3,8 @@ package com.back.gui;
 import com.back.model.Controladora;
 import com.back.model.Usuario;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VerDatos extends javax.swing.JFrame {
@@ -26,7 +28,7 @@ public class VerDatos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -64,8 +66,13 @@ public class VerDatos extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Datos Usuario");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash-97586_640 pequeña.png"))); // NOI18N
-        jButton1.setText("Eliminar");
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash-97586_640 pequeña.png"))); // NOI18N
+        btnBorrar.setText("Eliminar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit-1103599_640-pequeña.png"))); // NOI18N
         jButton2.setText("Editar");
@@ -78,7 +85,7 @@ public class VerDatos extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel3)
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addComponent(btnBorrar)
                 .addGap(68, 68, 68)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(360, Short.MAX_VALUE))
@@ -94,7 +101,7 @@ public class VerDatos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
+                        .addComponent(btnBorrar)
                         .addComponent(jButton2)))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
@@ -127,10 +134,52 @@ public class VerDatos extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
+    //Buscar el elemento de la tabla 
+    /*
+        1.Control de la tabla no este vacia,control que se halla seleccionada un registro
+        2.Obtener el id
+            2.1 Trae y asigna al id_usuario el valor en la tabla mascota de la fila seleccionada
+            2.2 Conviertelo a string y luego a int
+            3.3 Uso del metodo para borrar el campo
+        3. Aviso
+    */
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if(tablaUsuarios.getRowCount() > 0) {
+            if(tablaUsuarios.getSelectedRow()!=-1){
+                
+                int id_usuario = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(),0)));
+                control.borrarUsuario(id_usuario);
+                
+                mostratMensaje("Usuario Eliminado Correctamente", "Info" , "Borrar Usuario");
+            }
+            else {
+                mostratMensaje("No selecciono ningun Usuario", "error", "Error al eliminar");
+            }
+        }
+        else{
+            mostratMensaje("No hay registros en la tabla", "Error", "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
+    /*
+        Metodo para mostrar un mensaje
+    */
+    public void mostratMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (tipo.equals("error")) {
+            optionPane.setMessage(JOptionPane.ERROR);
+        }
+        
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
