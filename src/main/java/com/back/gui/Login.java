@@ -1,5 +1,8 @@
 package com.back.gui;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class Login extends javax.swing.JFrame {
 
     
@@ -66,6 +69,11 @@ public class Login extends javax.swing.JFrame {
 
         btnNuevoIngreso.setBackground(new java.awt.Color(102, 153, 255));
         btnNuevoIngreso.setText("Nuevo Ingreso");
+        btnNuevoIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoIngresoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnNuevoIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 140, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -115,6 +123,28 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
         ventana2.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    /*
+        METODO PARA SETEAR LOS VALORES A LAS VARIABLES GLOBALES.
+        SEGUN LA ACCION DEL BOTON NUEVO INGRESO
+        1.Guardar datos de los componenetes dentro de las variables locales
+        2.Instanciacion del proximo jFrame.
+        3.Habilitamos la visibilidad de la interfaz NuevoIngreso,Desabilitamos la visibilidad de esta inferfaz.
+        4.Centramos la posicion de la ventana
+    */
+    private void btnNuevoIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoIngresoActionPerformed
+        documentoIngreso = txtDocumentoIngreso.getText();
+        password = txtContraseña.getText();
+        NuevoIngreso nuevoIngreso = new NuevoIngreso();
+        JOptionPane optionPane = new JOptionPane("Ha iniciado Sesion Correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Inicio de Sesion");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        nuevoIngreso.setVisible(true);
+        this.setVisible(false);
+        nuevoIngreso.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnNuevoIngresoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

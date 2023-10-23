@@ -1,5 +1,8 @@
 package com.back.gui;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class NuevoIngreso extends javax.swing.JFrame {
 
 
@@ -61,6 +64,11 @@ public class NuevoIngreso extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(102, 153, 255));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wipe-97583_640.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, 50));
 
         txtDocumento.setBackground(new java.awt.Color(153, 153, 153));
@@ -80,6 +88,11 @@ public class NuevoIngreso extends javax.swing.JFrame {
         btnGuardar.setBackground(new java.awt.Color(102, 153, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/disc-2029826_640.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -88,6 +101,11 @@ public class NuevoIngreso extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.jpg"))); // NOI18N
@@ -106,6 +124,55 @@ public class NuevoIngreso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    /*
+        METODO PARA LIMPIAR LOS CAMPOS DE LOS COMPONENETES
+        1.Seteo de todos los compenentes
+    */
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDocumento.setText("");
+        cmbCargo.setSelectedIndex(0);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+    
+    /*
+        METODO PARA GUARDAR Y ENVIAR LOS DATOS DEL FORMULARIO A LA INTERFAZ CargarDatos
+        1.Guardar Datos de los componenetes en variables auxiliares
+        2.Instanciacion de la interfaz que recibira los datos del ingreso
+        3.Uso del metodo de la Interfaz CargarDatos para enviar datos del ingreso
+        4.Mensjae en pantalla para varidar nueva creacion
+        4.Habilitar la visibilidad del nuevo jframe y desabilitar la anterior
+    */
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String nombreUsuario = txtNombre.getText();
+        String apellidoUsuario = txtApellido.getText();
+        String documentoUsuario = txtDocumento.getText();
+        String cargoUsuario = (String) cmbCargo.getSelectedItem();
+        CargarDatos ventana3 = new CargarDatos();
+        ventana3.obtenerDatosNuevoIngreso(nombreUsuario, apellidoUsuario, documentoUsuario, cargoUsuario);
+        
+        JOptionPane optionPane = new JOptionPane("Se Creo Nuevo Usuario Correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        ventana3.setVisible(true);
+        this.setVisible(false);
+        ventana3.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    /*
+        METODO PARA REDIRIGIR AL USUARIO AL FORMULARIO DE Login
+        1.Instanciacion de la interfas a conducir
+        2.Habilitar Visibilidad
+        3.Centrar locacion del formulario
+    */
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

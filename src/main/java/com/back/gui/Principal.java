@@ -3,8 +3,16 @@ package com.back.gui;
 public class Principal extends javax.swing.JFrame {
 
 
+    /*
+        Constructor de la clase Interfas Principal
+        1.Inicializacion de los Componentes
+        2.Instancia la clase login y seteo los valores de la variable publica statica
+          en los componenetes del jframe
+    */
     public Principal() {
         initComponents();
+        txtViewDocumento.setText(Login.documentoIngreso);
+        jTextField1.setText(Login.password);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +26,7 @@ public class Principal extends javax.swing.JFrame {
         txtViewDocumento = new javax.swing.JTextField();
         btnCargarDatos = new javax.swing.JButton();
         btnVerDatos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,11 +51,25 @@ public class Principal extends javax.swing.JFrame {
 
         btnCargarDatos.setBackground(new java.awt.Color(102, 153, 255));
         btnCargarDatos.setText("Cargar Datos");
+        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarDatosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 140, 30));
 
         btnVerDatos.setBackground(new java.awt.Color(102, 153, 255));
         btnVerDatos.setText("Mostrar Datos");
         jPanel1.add(btnVerDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 140, 30));
+
+        jButton1.setBackground(new java.awt.Color(51, 255, 51));
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -64,11 +87,31 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    /*
+        METODO PARA REDIRIGIR A LA INTERFAZ CARGARDATOS
+        1.Instanciacion de la interfaz ha mostrar
+        2.Habilitamos la visibilidad de la siguiente ventana,Desabilitamos la visibilidad de esta ventana.
+        3.Posicionamos la ventana al centro
+    */
+    private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
+        CargarDatos cargarDatos = new CargarDatos();
+        cargarDatos.setVisible(true);
+        this.setVisible(false);
+        cargarDatos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCargarDatosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnVerDatos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

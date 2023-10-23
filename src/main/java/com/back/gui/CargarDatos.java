@@ -1,10 +1,42 @@
 package com.back.gui;
 
+import java.text.SimpleDateFormat;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class CargarDatos extends javax.swing.JFrame {
 
+    /*
+        Instanciaciones:
+        1.Instanciacion de la clase controladora
+        2.Instanciacion de la Interfaz que contiene las variables globales
+    */
+    //Controladora control = new Controladora();
+    Login login = new Login();
+    
+    /*
+        Variables para almacenar los datos de componentes anteriores
+    */
+    private String nombreUsuario;
+    private String apellidoUsuario;
+    private String documentoUsuario;
+    private String cargoUsuario;
+    private String documentoIngreso = Login.documentoIngreso;
+    private String password = Login.password;
 
     public CargarDatos() {
         initComponents();
+    }
+    
+    /*
+        METODO PARA OBTENER Y GUARDAR LOS DATOS DE LA INTERFAZ NUEVOINGRESO EN VARIABLES GLOBALES
+    */
+    public void obtenerDatosNuevoIngreso ( String nombreUsuario, String apellidoUsuario,String documentoUsuario, String cargoUsuario){
+        
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.documentoUsuario = documentoUsuario;
+        this.cargoUsuario = cargoUsuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -28,7 +60,7 @@ public class CargarDatos extends javax.swing.JFrame {
         txtMostrarJornada = new javax.swing.JTextField();
         txtMostrarDocumento = new javax.swing.JTextField();
         txtMostrarCargo = new javax.swing.JTextField();
-        txtMostrarjornada = new javax.swing.JTextField();
+        txtMostrarDIngreso = new javax.swing.JTextField();
         txtMostrarContraseña = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
@@ -58,6 +90,11 @@ public class CargarDatos extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(102, 153, 255));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wipe-97583_640.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -71,6 +108,11 @@ public class CargarDatos extends javax.swing.JFrame {
         btnGuardar.setBackground(new java.awt.Color(102, 153, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/disc-2029826_640.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, 50));
 
         btnVolver.setText("Volver");
@@ -81,7 +123,7 @@ public class CargarDatos extends javax.swing.JFrame {
         jPanel1.add(txtMostrarJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 100, -1));
         jPanel1.add(txtMostrarDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 100, 30));
         jPanel1.add(txtMostrarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 100, 30));
-        jPanel1.add(txtMostrarjornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 100, 30));
+        jPanel1.add(txtMostrarDIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 100, 30));
         jPanel1.add(txtMostrarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.jpg"))); // NOI18N
@@ -101,6 +143,41 @@ public class CargarDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        cmbJornada.setSelectedIndex(0);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+     /*
+        METODO PARA GUARDAR DATOS OBTENIDOS
+        1.Creacion de variables auxiliares para guardar datos de jornada y horario
+        2.Seteo de los componenete auxiliares para mostrar los datos obtenidos
+        3.Uso del objeto controlador y su metodo guardar, para enviar valores
+        4.Mensaje en pantala para verificar el guardado de datos
+    */   
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String jornada = (String) cmbJornada.getSelectedItem();
+        String horario;
+        //java.util.Date date = new java.util.Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd, HH:mm");
+        horario = f.format(jdcRegistro.getDate());
+        txtMostrarNombre.setText(nombreUsuario);
+        txtMostrarApellido.setText(apellidoUsuario);
+        txtMostrarDocumento.setText(documentoUsuario);
+        txtMostrarCargo.setText(cargoUsuario);
+        txtMostrarJornada.setText(jornada);
+        txtMostrarRegistro.setText(horario);
+        txtMostrarDIngreso.setText(documentoIngreso);
+        txtMostrarContraseña.setText(password);
+        
+        //control.guardar(nombreUsuario,apellidoUsuario,documentoUsuario,cargoUsuario,password,jornada,horario);
+        
+        JOptionPane optionPane = new JOptionPane("Los Datos se guardaron Correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -118,10 +195,10 @@ public class CargarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField txtMostrarApellido;
     private javax.swing.JTextField txtMostrarCargo;
     private javax.swing.JTextField txtMostrarContraseña;
+    private javax.swing.JTextField txtMostrarDIngreso;
     private javax.swing.JTextField txtMostrarDocumento;
     private javax.swing.JTextField txtMostrarJornada;
     private javax.swing.JTextField txtMostrarNombre;
     private javax.swing.JTextField txtMostrarRegistro;
-    private javax.swing.JTextField txtMostrarjornada;
     // End of variables declaration//GEN-END:variables
 }
