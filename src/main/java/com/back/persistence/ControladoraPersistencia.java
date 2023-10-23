@@ -15,8 +15,14 @@ public class ControladoraPersistencia {
         userJpa.create(usuario);
     }
 
+    //Devulve una lista
+    /*
+        Metodo para devolver los datos de la base de datos y asignarlos al vector
+    */
     public List<Usuario> traerUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         
+        return userJpa.findUsuarioEntities();
+
     }
     
 }

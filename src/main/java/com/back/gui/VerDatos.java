@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 public class VerDatos extends javax.swing.JFrame {
 
     //Instanciacion de la controladora de la logica
-    Controladora control;
+    Controladora control = null;
     
     public VerDatos() {
         control = new Controladora();
@@ -24,7 +24,7 @@ public class VerDatos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaUsuarios = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -47,7 +47,7 @@ public class VerDatos extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -58,7 +58,7 @@ public class VerDatos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaUsuarios);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,35 +76,32 @@ public class VerDatos extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel3))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jLabel3)
+                .addGap(34, 34, 34)
+                .addComponent(jButton1)
+                .addGap(68, 68, 68)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(360, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel3)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(31, 31, 31))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addContainerGap(303, Short.MAX_VALUE))))
+                        .addComponent(jButton2)))
+                .addGap(13, 13, 13)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addGap(31, 31, 31))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 800, 490));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 490));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -141,12 +138,12 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
 
     /*
-        Metodo para cargar la tabla
-        1.Intancias clase para definir la visualizacion de la tabla
+        Metodo para cargar la modeloTabla
+        1.Intancias clase para definir la visualizacion de la modeloTabla
         2.No permitir que las filas y columnas sean editables por el usuario
         3.Creacion de columnas personalizadas
         4.Cargar los datos de la DB a la interfaz
@@ -160,9 +157,10 @@ public class VerDatos extends javax.swing.JFrame {
     */
     private void cargarTabla() {
         
-        //Definir el modelo que queremos que tenga la tabla
-        DefaultTableModel tabla = new DefaultTableModel(){
+        //Definir el modelo que queremos que tenga la modeloTabla
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
             //Filas y columnas no editables
+            @Override
             public boolean isCellEditable (int row, int column){
                 return false;
             }
@@ -170,20 +168,22 @@ public class VerDatos extends javax.swing.JFrame {
         
         //Establecer la columnas (Titulos) por medio de vector
         String titulos[] = {"id", "Nombre", "Apellido", "Documento", "Cargo","Jornada", "Horario" };
-        tabla.setColumnIdentifiers(titulos);
+        modeloTabla.setColumnIdentifiers(titulos);
         
         //Cargar datos de la base de datos
         List <Usuario> listaUsuarios = control.traerUsuarios();
         
         
-        //Recorrer la lista y mostrar los elementos en la tabla
+        //Recorrer la lista y mostrar los elementos en la modeloTabla
         if(listaUsuarios!=null){
             for (Usuario user : listaUsuarios) {
                 Object[] objeto = {user.getId_usuario(),user.getNombre(),user.getApellido(),
                 user.getDocumento(),user.getCargo(), user.getHorario().getJornada(), user.getHorario().getHorario()};
                 
-                tabla.addRow(objeto);
+                modeloTabla.addRow(objeto);
             }
         }
+        //Asignacion de los resultados a la modeloTabla de la interfaz
+        tablaUsuarios.setModel(modeloTabla);
     }
 }
