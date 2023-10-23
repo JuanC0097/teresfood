@@ -29,7 +29,7 @@ public class VerDatos extends javax.swing.JFrame {
         tablaUsuarios = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         btnBorrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,8 +74,13 @@ public class VerDatos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit-1103599_640-pequeña.png"))); // NOI18N
-        jButton2.setText("Editar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit-1103599_640-pequeña.png"))); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -87,7 +92,7 @@ public class VerDatos extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(btnBorrar)
                 .addGap(68, 68, 68)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(360, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -102,7 +107,7 @@ public class VerDatos extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnBorrar)
-                        .addComponent(jButton2)))
+                        .addComponent(btnEditar)))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
@@ -162,6 +167,27 @@ public class VerDatos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if(tablaUsuarios.getRowCount() > 0){
+            if (tablaUsuarios.getSelectedRow()!= -1) {
+                
+                int id_usuario = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(),0)));
+                ModificarDatos pantallaMod = new ModificarDatos();
+                pantallaMod.setVisible(true);
+                //this.setVisible(false);
+                pantallaMod.setLocationRelativeTo(null);
+                //control.editarUsuario(id_usuario);
+                
+            }
+            else {
+                mostratMensaje("No selecciono ningun Usuario", "error", "Error al eliminar");
+            }
+        }
+        else{
+            mostratMensaje("No hay registros en la tabla", "Error", "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     /*
         Metodo para mostrar un mensaje
     */
@@ -181,7 +207,7 @@ public class VerDatos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

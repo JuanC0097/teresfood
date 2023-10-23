@@ -1,11 +1,15 @@
 com\back\gui\Principal$3.class
 com\back\gui\VerDatos.class
 com\back\gui\NuevoIngreso.class
+com\back\gui\ModificarDatos$1.class
 com\back\gui\Login$2.class
+com\back\gui\ModificarDatos.class
 com\back\persistence\UsuarioJpaController.class
 com\back\gui\CargarDatos.class
 com\back\gui\NuevoIngreso$3.class
 com\back\gui\CargarDatos$1.class
+com\back\gui\VerDatos$4.class
+com\back\gui\ModificarDatos$3.class
 com\back\terefood\Terefood.class
 com\back\persistence\exceptions\PreexistingEntityException.class
 com\back\model\Horario_.class
@@ -18,6 +22,7 @@ com\back\gui\Login$1.class
 com\back\persistence\HorarioJpaController.class
 com\back\gui\VerDatos$1.class
 com\back\model\Usuario.class
+com\back\gui\ModificarDatos$2.class
 com\back\gui\Principal$2.class
 com\back\persistence\ControladoraPersistencia.class
 com\back\model\Controladora.class
