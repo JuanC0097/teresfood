@@ -1,5 +1,6 @@
 package com.back.gui;
 
+import com.back.model.Controladora;
 import java.text.SimpleDateFormat;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -11,8 +12,8 @@ public class CargarDatos extends javax.swing.JFrame {
         1.Instanciacion de la clase controladora
         2.Instanciacion de la Interfaz que contiene las variables globales
     */
-    //Controladora control = new Controladora();
-    Login login = new Login();
+    Controladora control = new Controladora();
+    //Login login = new Login();
     
     /*
         Variables para almacenar los datos de componentes anteriores
@@ -169,7 +170,7 @@ public class CargarDatos extends javax.swing.JFrame {
         txtMostrarDIngreso.setText(documentoIngreso);
         txtMostrarContraseña.setText(password);
         
-        //control.guardar(nombreUsuario,apellidoUsuario,documentoUsuario,cargoUsuario,password,jornada,horario);
+        control.guardar(nombreUsuario,apellidoUsuario,documentoUsuario,cargoUsuario,password,jornada,horario);
         
         JOptionPane optionPane = new JOptionPane("Los Datos se guardaron Correctamente");
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
