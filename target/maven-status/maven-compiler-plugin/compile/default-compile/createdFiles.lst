@@ -26,4 +26,5 @@ com\back\gui\Login.class
 com\back\gui\CargarDatos$2.class
 com\back\gui\NuevoIngreso$2.class
 com\back\gui\Principal$1.class
+com\back\gui\VerDatos$3.class
 com\back\model\Horario.class

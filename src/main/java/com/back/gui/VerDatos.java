@@ -151,6 +151,7 @@ public class VerDatos extends javax.swing.JFrame {
                 control.borrarUsuario(id_usuario);
                 
                 mostratMensaje("Usuario Eliminado Correctamente", "Info" , "Borrar Usuario");
+                cargarTabla();
             }
             else {
                 mostratMensaje("No selecciono ningun Usuario", "error", "Error al eliminar");
@@ -170,7 +171,7 @@ public class VerDatos extends javax.swing.JFrame {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         }
         else if (tipo.equals("error")) {
-            optionPane.setMessage(JOptionPane.ERROR);
+            optionPane.setMessage(JOptionPane.ERROR_MESSAGE);
         }
         
         JDialog dialog = optionPane.createDialog(titulo);
