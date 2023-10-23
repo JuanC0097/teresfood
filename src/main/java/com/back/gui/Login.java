@@ -130,15 +130,6 @@ public class Login extends javax.swing.JFrame {
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
         }
-        /*Principal ventana2 =  new Principal();
-        ventana2.setVisible(true);
-        this.setVisible(false);
-        ventana2.setLocationRelativeTo(null);
-        JOptionPane optionPane = new JOptionPane("Ha iniciado Sesion Correctamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Inicio de Sesion");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);*/
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /*
