@@ -1,3 +1,4 @@
+com\back\gui\VerDatos.class
 com\back\gui\NuevoIngreso.class
 com\back\gui\Login$2.class
 com\back\persistence\UsuarioJpaController.class
