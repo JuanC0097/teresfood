@@ -48,6 +48,7 @@ public class VerDatos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Datos Usuario");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash-97586_640 pequeña.png"))); // NOI18N

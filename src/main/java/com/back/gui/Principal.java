@@ -60,6 +60,11 @@ public class Principal extends javax.swing.JFrame {
 
         btnVerDatos.setBackground(new java.awt.Color(102, 153, 255));
         btnVerDatos.setText("Mostrar Datos");
+        btnVerDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerDatosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVerDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 140, 30));
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
@@ -106,6 +111,13 @@ public class Principal extends javax.swing.JFrame {
         login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
+        VerDatos verdatos = new VerDatos();
+        verdatos.setVisible(true);
+        this.setVisible(false);
+        verdatos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVerDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
