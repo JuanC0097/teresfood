@@ -8,6 +8,10 @@ public class Controladora {
     
     public void guardar(String nombreUsuario, String apellidoUsuario, String documentoUsuario, String cargoUsuario, String password, String jornada, String horario) {
         
+        Horario registro = new Horario();
+        registro.setJornada(jornada);
+        registro.setHorario(horario);
+        
         Usuario usuario = new Usuario();
         usuario.setNombre(nombreUsuario);
         usuario.setApellido(apellidoUsuario);
@@ -15,11 +19,9 @@ public class Controladora {
         usuario.setCargo(cargoUsuario);
         usuario.setPassword(password);
         
-        Horario registro = new Horario();
-        registro.setJornada(jornada);
-        registro.setHorario(horario);
+        usuario.setHorario(registro);
         
-        
+        controlPersis.guardar(registro,usuario);
     }
     
 }
