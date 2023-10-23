@@ -1,6 +1,7 @@
 package com.back.model;
 
 import com.back.persistence.ControladoraPersistencia;
+import java.util.List;
 
 public class Controladora {
 
@@ -22,6 +23,13 @@ public class Controladora {
         usuario.setHorario(registro);
         
         controlPersis.guardar(registro,usuario);
+    }
+
+    /*
+        Metodo para obtener lista de usuarios de la base de datos
+    */
+    public List<Usuario> traerUsuarios() {
+        return controlPersis.traerUsuario();
     }
     
 }

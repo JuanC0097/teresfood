@@ -9,12 +9,14 @@ com\back\gui\CargarDatos$1.class
 com\back\terefood\Terefood.class
 com\back\persistence\exceptions\PreexistingEntityException.class
 com\back\model\Horario_.class
+com\back\gui\VerDatos$2.class
 com\back\gui\Principal.class
 com\back\persistence\exceptions\IllegalOrphanException.class
 com\back\gui\NuevoIngreso$1.class
 com\back\model\Usuario_.class
 com\back\gui\Login$1.class
 com\back\persistence\HorarioJpaController.class
+com\back\gui\VerDatos$1.class
 com\back\model\Usuario.class
 com\back\gui\Principal$2.class
 com\back\persistence\ControladoraPersistencia.class
